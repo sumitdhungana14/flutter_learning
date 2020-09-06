@@ -1,8 +1,8 @@
-import '../meal-categories/meal_categories_screen.dart';
+import '../screens/category_meals_screen.dart';
 
 class NamedRoute {
 
-  static Map<String, Function> namedRoute = {
-    MealCategoriesScreen.routeName: (_) => MealCategoriesScreen()
+  static var namedRoute = {
+    CategoryMealsScreen.routeName: (_) => CategoryMealsScreen()
   };
 }

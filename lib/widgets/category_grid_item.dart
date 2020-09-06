@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-import './meal_categories_screen.dart';
+import '../screens/category_meals_screen.dart';
 
-class CategoryGrid extends StatelessWidget {
+class CategoryGridItem extends StatelessWidget {
   final String id;
   final String title;
   final Color color;
 
-  const CategoryGrid(this.id, this.title, this.color);
+  const CategoryGridItem(this.id, this.title, this.color);
 
   void openMealCategoriesScreen(BuildContext ctx) {
-    Navigator.of(ctx).pushNamed(MealCategoriesScreen.routeName, arguments: {
+    Navigator.of(ctx).pushNamed(CategoryMealsScreen.routeName, arguments: {
       'id': id,
       'title': title,
     });

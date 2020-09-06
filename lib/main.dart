@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/meal-categories/categories_screen.dart';
-import 'package:flutter_app/mocks/category_mock.dart';
 
+import './screens/categories_screen.dart';
+import './mocks/category_mock.dart';
 import './routes/named_route.dart';
 
 void main() {
@@ -18,7 +18,8 @@ class MyApp extends StatelessWidget {
           accentColor: Colors.amber,
           textTheme: ThemeData.light().textTheme.copyWith(
                 headline1: TextStyle(),
-              )),
+              ),
+          canvasColor: Color.fromRGBO(255, 200, 200, 0.8)),
       home: CategoriesScreen(CategoryMock.getCategory()),
       routes: NamedRoute.namedRoute,
     );
