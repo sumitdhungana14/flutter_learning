@@ -8,7 +8,28 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  Map<String, bool> filters = {
+    'gluten' : false,
+    'lactose': false,
+    'vegan': false,
+    'vegetarian': false,
+  };
+
+  void setFilters(Map<String, bool> newFiltes) {
+    setState(() {
+      filters['gluten'] = newFiltes['gluten'];
+      filters['lactose'] = newFiltes['lactose'];
+      filters['vegan'] = newFiltes['vegan'];
+      filters['vegetarian'] = newFiltes['vegetarian'];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -21,7 +42,7 @@ class MyApp extends StatelessWidget {
               ),
           canvasColor: Color.fromRGBO(255, 200, 200, 0.8)),
       home: TabsScreen(),
-      routes: NamedRoute.namedRoute,
+      routes: NamedRoute.getNamedRoute(filters, setFilters),
       onUnknownRoute: (settings) {
         return MaterialPageRoute(builder: (_) => NotFound());
       },

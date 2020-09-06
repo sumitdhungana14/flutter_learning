@@ -1,7 +1,6 @@
 import './../models/meal.dart';
 
 class MealMock extends Meal {
-
   static List<Meal> getMealsByCategory(String category) {
     return meals.where((meal) => meal.categories.contains(category)).toList();
   }
@@ -139,8 +138,8 @@ class MealMock extends Meal {
     Meal(
       id: 'm5',
       categories: [
-        'c2'
-            'c5',
+        'c2',
+        'c5',
         'c10',
       ],
       title: 'Salad with Smoked Salmon',
