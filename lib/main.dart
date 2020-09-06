@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/screens/not_found_screen.dart';
 
 import './screens/categories_screen.dart';
 import './mocks/category_mock.dart';
@@ -22,6 +23,9 @@ class MyApp extends StatelessWidget {
           canvasColor: Color.fromRGBO(255, 200, 200, 0.8)),
       home: CategoriesScreen(CategoryMock.getCategory()),
       routes: NamedRoute.namedRoute,
+      onUnknownRoute: (settings) {
+        return MaterialPageRoute(builder: (_) => NotFound());
+      },
     );
   }
 }
