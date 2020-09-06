@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
+import './../mocks/category_mock.dart';
 import '../widgets/category_grid_item.dart';
 import './../models/Category.dart';
 
 class CategoriesScreen extends StatelessWidget {
   static const routeName = '/';
 
-  final List<Category> categories;
-
-  const CategoriesScreen(this.categories);
+  final List<Category> categories = CategoryMock.getCategory();
 
   @override
   Widget build(BuildContext context) {

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/screens/not_found_screen.dart';
-import 'package:flutter_app/screens/tabs_screen.dart';
 
-import './screens/categories_screen.dart';
-import './mocks/category_mock.dart';
+import './screens/not_found_screen.dart';
+import './screens/tabs_screen.dart';
 import './routes/named_route.dart';
 
 void main() {

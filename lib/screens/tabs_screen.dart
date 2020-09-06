@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/mocks/category_mock.dart';
-import 'package:flutter_app/models/Category.dart';
-import 'package:flutter_app/screens/categories_screen.dart';
-import 'package:flutter_app/screens/favourites_screen.dart';
+
+import './../screens/categories_screen.dart';
+import './../screens/favourites_screen.dart';
 
 class TabsScreen extends StatefulWidget {
   @override
@@ -10,37 +9,36 @@ class TabsScreen extends StatefulWidget {
 }
 
 class _TabsScreenState extends State<TabsScreen> {
+  
+  final List<Map<String, Object>> pages = [
+    {'page': CategoriesScreen(), 'title': 'Categories'},
+    {'page': FavouritesScreen(), 'title': 'My Favourites'}
+  ]; 
 
-  List<Category> categories;
+  int selectedIndex = 0;
 
-  @override
-  void initState() {
-    categories = CategoryMock.getCategory();
-    super.initState();
+  void selectItem(int index) {
+    setState(() {
+      selectedIndex = index;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-      child: Scaffold(
+    return Scaffold(
         appBar: AppBar(
-            title: Text('Meals'),
-            bottom: TabBar(
-              tabs: [
-                Tab(
-                  icon: Icon(Icons.category),
-                  text: 'Category',
-                ),
-                Tab(icon: Icon(Icons.star), text: 'Favourite'),
-              ],
-            ),
-            ),
-        body: TabBarView(children: [
-          CategoriesScreen(categories),
-          FavouritesScreen()
+            title: Text(pages[selectedIndex]['title'])),
+        body: pages[selectedIndex]['page'],
+        bottomNavigationBar: BottomNavigationBar(
+          onTap: selectItem,
+          backgroundColor: Theme.of(context).primaryColor,
+          unselectedItemColor: Colors.white,
+          selectedItemColor: Theme.of(context).accentColor,
+          currentIndex: selectedIndex,
+          items: [
+          BottomNavigationBarItem(icon: Icon(Icons.category), title: Text('Categories')),
+          BottomNavigationBarItem(icon: Icon(Icons.star), title: Text('Favourites')),
         ],),
-      ),
     );
   }
 }
