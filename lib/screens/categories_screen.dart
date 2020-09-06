@@ -12,11 +12,7 @@ class CategoriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Categories'),
-      ),
-      body: Container(
+    return Container(
         padding: const EdgeInsets.all(15),
         child: GridView(
           children: categories
@@ -28,7 +24,6 @@ class CategoriesScreen extends StatelessWidget {
               crossAxisSpacing: 20,
               mainAxisSpacing: 20),
         ),
-      ),
-    );
+      );
   }
 }

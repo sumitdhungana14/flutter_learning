@@ -9,7 +9,7 @@ class NotFound extends StatelessWidget {
       ),
       body: Center(
         child:
-            Text('Page doesn\'t exist.', style: TextStyle(color: Colors.red)),
+            Text('Page doesn\'t exist.', style: TextStyle(color: Colors.red, fontSize: 24)),
       ),
     );
   }
