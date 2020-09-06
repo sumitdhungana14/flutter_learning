@@ -2,7 +2,7 @@ import '../meal-categories/meal_categories_screen.dart';
 
 class NamedRoute {
 
-  static var namedRoute = {
+  static Map<String, Function> namedRoute = {
     MealCategoriesScreen.routeName: (_) => MealCategoriesScreen()
   };
 }

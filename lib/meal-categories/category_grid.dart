@@ -19,6 +19,8 @@ class CategoryGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      splashColor: Theme.of(context).primaryColor,
+      borderRadius: BorderRadius.circular(8),
       onTap: () => openMealCategoriesScreen(context),
       child: Container(
         decoration: BoxDecoration(
