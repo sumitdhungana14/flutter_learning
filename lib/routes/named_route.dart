@@ -1,8 +1,10 @@
+import '../screens/meal_screen.dart';
 import '../screens/category_meals_screen.dart';
 
 class NamedRoute {
 
   static var namedRoute = {
-    CategoryMealsScreen.routeName: (_) => CategoryMealsScreen()
+    CategoryMealsScreen.routeName: (_) => CategoryMealsScreen(),
+    MealScreen.routeName: (_) => MealScreen(),
   };
 }

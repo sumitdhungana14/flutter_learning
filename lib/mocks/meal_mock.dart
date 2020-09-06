@@ -1,6 +1,7 @@
 import './../models/meal.dart';
 
 class MealMock extends Meal {
+
   static List<Meal> getMealsByCategory(String category) {
     return meals.where((meal) => meal.categories.contains(category)).toList();
   }
