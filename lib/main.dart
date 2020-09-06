@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/mocks/meal_mock.dart';
+import 'package:flutter_app/models/meal.dart';
 
 import './screens/not_found_screen.dart';
 import './screens/tabs_screen.dart';
@@ -15,7 +17,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   Map<String, bool> filters = {
-    'gluten' : false,
+    'gluten': false,
     'lactose': false,
     'vegan': false,
     'vegetarian': false,
@@ -30,6 +32,28 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  List<Meal> favouriteMeals = [];
+
+  void toggleFavourite(String mealId) {
+    var meals = MealMock.meals;
+    var meal = meals.firstWhere((element) => element.id == mealId);
+    var mealIndex = favouriteMeals.indexOf(meal);
+
+    if (mealIndex >= 0) {
+      setState(() {
+        favouriteMeals.removeAt(mealIndex);
+      });
+    } else {
+      setState(() {
+        favouriteMeals.add(meal);
+      });
+    }
+  }
+
+  bool isFavorite(String mealId) {
+    return favouriteMeals.any((element) => element.id == mealId);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -41,8 +65,9 @@ class _MyAppState extends State<MyApp> {
                 headline1: TextStyle(),
               ),
           canvasColor: Color.fromRGBO(255, 200, 200, 0.8)),
-      home: TabsScreen(),
-      routes: NamedRoute.getNamedRoute(filters, setFilters),
+      home: TabsScreen(favouriteMeals),
+      routes: NamedRoute.getNamedRoute(
+          filters, setFilters, isFavorite, toggleFavourite),
       onUnknownRoute: (settings) {
         return MaterialPageRoute(builder: (_) => NotFound());
       },
