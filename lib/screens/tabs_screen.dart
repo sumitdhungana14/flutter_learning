@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/widgets/main_drawer.dart';
 
 import './../screens/categories_screen.dart';
 import './../screens/favourites_screen.dart';
@@ -9,11 +10,10 @@ class TabsScreen extends StatefulWidget {
 }
 
 class _TabsScreenState extends State<TabsScreen> {
-  
   final List<Map<String, Object>> pages = [
     {'page': CategoriesScreen(), 'title': 'Categories'},
     {'page': FavouritesScreen(), 'title': 'My Favourites'}
-  ]; 
+  ];
 
   int selectedIndex = 0;
 
@@ -26,19 +26,22 @@ class _TabsScreenState extends State<TabsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-            title: Text(pages[selectedIndex]['title'])),
-        body: pages[selectedIndex]['page'],
-        bottomNavigationBar: BottomNavigationBar(
-          onTap: selectItem,
-          backgroundColor: Theme.of(context).primaryColor,
-          unselectedItemColor: Colors.white,
-          selectedItemColor: Theme.of(context).accentColor,
-          currentIndex: selectedIndex,
-          items: [
-          BottomNavigationBarItem(icon: Icon(Icons.category), title: Text('Categories')),
-          BottomNavigationBarItem(icon: Icon(Icons.star), title: Text('Favourites')),
-        ],),
+      appBar: AppBar(title: Text(pages[selectedIndex]['title'])),
+      drawer: MainDrawer(),
+      body: pages[selectedIndex]['page'],
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: selectItem,
+        backgroundColor: Theme.of(context).primaryColor,
+        unselectedItemColor: Colors.white,
+        selectedItemColor: Theme.of(context).accentColor,
+        currentIndex: selectedIndex,
+        items: [
+          BottomNavigationBarItem(
+              icon: Icon(Icons.category), title: Text('Categories')),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.star), title: Text('Favourites')),
+        ],
+      ),
     );
   }
 }
